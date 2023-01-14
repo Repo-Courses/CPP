@@ -4,6 +4,19 @@
 #include <string>
 #include <set>
 
+//Create a function that takes a string and a character as input, and uses lambdas, overloads, and error handling to find and return the number of occurrences of the character in the string.
+int Foo(const std::string& str, char ch) {
+    // This is the easiest way.
+    // auto numOfOccurance = std::count(str.begin(), str.end(), ch);
+
+    if (str.empty()) {
+        std::cout << "Error: input string is empty" << std::endl;
+        return -1;
+    }
+    int numOfOccurrences = std::count_if(str.begin(), str.end(), [&](char c){ return c == ch; });
+    return numOfOccurrences;
+}
+
 //Write a function that takes in a vector of integers and returns the smallest element.
 int Foo(const std::vector<int>& vec) {
    int smallest = *std::min_element(vec.begin(), vec.end());
