@@ -5,7 +5,7 @@
 #include <set>
 
 //Create a function that takes a string and a character as input, and uses lambdas, overloads, and error handling to find and return the number of occurrences of the character in the string.
-int Foo(const std::string& str, char ch) {
+int Foo_str(const std::string& str, char ch) {
     // This is the easiest way.
     // auto numOfOccurance = std::count(str.begin(), str.end(), ch);
 
