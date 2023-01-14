@@ -116,6 +116,18 @@ void func_print(T y) {
     }
     std::cout << std::endl;
 }
+// Implement a function that takes a two-dimensional array of integers as input and uses constexpr
+// and template recursion to calculate the sum of all elements in the array.
+template<std::size_t N, std::size_t M>
+constexpr int SumArray(const int (&arr)[N][M]) {
+    int sum = 0;
+    for (std::size_t i = 0; i < N; i++) {
+        for (std::size_t j = 0; j < M; j++) {
+            sum += arr[i][j];
+        }
+    }
+    return sum;
+}
 
 int main() {
     std::vector<int> vec = {6,6,12,4,3,4,6,7,8};
