@@ -99,6 +99,14 @@ std::vector<int> Foo11(const std::vector<int>& vec) {
     return result;
 }
 
+// Write a function that takes a string as input, and uses the std::unique algorithm and a lambda function to remove all consecutive duplicate characters from the string.
+// The function should return the modified string.
+std::string reduceDublications(std::string& str) {
+    auto it = std::unique(str.begin(), str.end());
+    str.erase(it, str.end());
+    return str;
+}
+
 //Write a function that takes in a vector of integers and returns a boolean indicating whether the vector contains any adjacent duplicate elements (i.e., elements that are equal to their immediate neighbors).
 bool Foo12(std::vector<int>& vec) {
     std::sort(vec.begin(), vec.end());
@@ -144,4 +152,8 @@ int main() {
     std::cout << Foo10(vec).at(1) << std::endl;
     func_print(Foo11(vec));
     std::cout << Foo12(vec) << std::endl;
+    std::string str("hiiiiih");
+    std::cout << reduceDublications(str);
+    
+    return 0;
 }
