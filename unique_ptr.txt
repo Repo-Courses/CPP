@@ -1,0 +1,29 @@
+/*
+std::unique_ptr is a smart pointer implementing ownership semantics for arbitrary pointers
+• ALWAYS use std::unique_ptr over raw pointers! 
+
+ a std::unique_ptr is a smart pointer in C++ that owns and manages a dynamically allocated object, ensuring that the object is deleted when the unique_ptr goes out of scope. 
+ It is unique in the sense that it cannot be copied, only moved.
+*/
+
+#include <memory>
+
+int main() {
+    // create a unique_ptr that owns a dynamically allocated int
+    std::unique_ptr<int> ptr(new int(5));
+
+    // access the value stored in the unique_ptr
+    std::cout << *ptr << std::endl;  // prints "5"
+
+    // move the unique_ptr to another variable
+    std::unique_ptr<int> ptr2 = std::move(ptr);
+
+    // ptr is now empty
+    std::cout << (ptr ? "not " : "") << "empty" << std::endl;  // prints "empty"
+
+    // ptr2 owns the dynamically allocated int
+    std::cout << *ptr2 << std::endl;  // prints "5"
+    
+    // you can use std::make_unique function to create unique_ptr instead of using new.
+    auto ptr = std::make_unique<int>(5);
+}
