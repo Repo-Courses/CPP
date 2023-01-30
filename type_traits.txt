@@ -1,0 +1,37 @@
+#include <type_traits>
+#include <iostream>
+
+class Base {};
+class Derived : public Base {};
+
+template <typename T>
+void print_traits(T& t) {
+    if constexpr (std::is_base_of<Base, T>::value)
+        std::cout << "T is derived from Base\n";
+    else
+        std::cout << "T is not derived from Base\n";
+
+    if constexpr (std::is_convertible<T, Base>::value)
+        std::cout << "T is convertible to Base\n";
+    else
+        std::cout << "T is not convertible to Base\n";
+
+    if constexpr (std::is_same<T, Derived>::value)
+        std::cout << "T is the same as Derived\n";
+    else
+        std::cout << "T is not the same as Derived\n";
+
+    if constexpr (std::is_invocable<void(T)>::value)
+        std::cout << "T is invocable as a function\n";
+    else
+        std::cout << "T is not invocable as a function\n";
+
+    std::cout << "Value type of T is " << typeid(typename std::remove_pointer<T>::type).name() << '\n';
+}
+
+int main() {
+    Derived d;
+    print_traits(d);
+
+    return 0;
+}
